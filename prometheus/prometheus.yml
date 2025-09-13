@@ -1,0 +1,17 @@
+global:
+  scrape_interval: 5s
+  evaluation_interval: 5s
+
+scrape_configs:
+  - job_name: "ollama"
+    static_configs:
+      - targets: ["llm-metrics:8000"]
+    metrics_path: "/metrics"
+    scrape_interval: 15s
+
+  - job_name: "cadvisor"
+    static_configs:
+      - targets: ["llm-cadvisor:8080"]
+    metrics_path: "/metrics"
+    scrape_interval: 15s
+
